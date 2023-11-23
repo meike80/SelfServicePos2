@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProdukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about/{search}', function () {
+Route::get('/about', function () {
 $data = [
     'pageTitle' => 'Tentang Kami',
     'content' => 'Ini adalah halaman tentang kami.'
@@ -24,4 +25,6 @@ $data = [
 return view('about', $data);
 });
 
-Route ::get('/produk', 'App\Http\Controllers\ProdukController@index');
+
+Route::resource('produk', ProdukController::class);
+Route::resource('users', UserController::class);
